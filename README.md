@@ -1,4 +1,4 @@
-# NOW data preprocessing for recomemnder systems
+# NOW data preprocessing for recommender systems
 
 [The description is unfinished, to be continued soon]
 
