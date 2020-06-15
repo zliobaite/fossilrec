@@ -4,7 +4,9 @@
 
 A repository providing instructions or preprocessing fossil data from NOW database. Will be renamed to dataNOW.
 
-File <code>NOW\_20200611\_public.csv</code> contains a database dump from June 11, 2020. It is a flat table, each row is a species occurence at a site (locality). 
+Download a data dump from NOW database <code>http://pantodon.science.helsinki.fi/now/locality_list.php</code>. Select <code>Export</code>, tick <code>Include species lists</code> and click <code>All NOW localities</code>. A database dump will appear on the screen.
+
+It is a flat table, each row is a species occurence at a site (locality). 
 
 For example, suppose we have sites A, B; possible species are x, y, z. Suppose site A containc species (x,z), site B contains species (y,z), the the table will have the following rows:
 
