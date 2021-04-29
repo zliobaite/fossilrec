@@ -1,55 +1,32 @@
-# NOW data preprocessing for recommender systems
+# Recommender systems for species distribution modeling
 
-[The description is unfinished, to be continued soon]
+This is a repository to accompany a research paper:
 
-A repository providing instructions or preprocessing fossil data from NOW database. Will be renamed to dataNOW.
+Zliobaite, I. (2021). Recommender systems for fossil species distribution modeling. Currently under review.
 
-Download a data dump from NOW database <code>http://pantodon.science.helsinki.fi/now/locality_list.php</code>. Select <code>Export</code>, tick <code>Include species lists</code> and click <code>All NOW localities</code>. A database dump will appear on the screen.
+The repository contains input datasets as well as scripts for running the analysis and reproducing the figures and tables reported in the manuscript. The occurence matrix is compiled from a public data dump downloaded from on 20210309. Data preprocessing steps are described in the manuscript.
 
-It is a flat table, each row is a species occurence at a site (locality). 
+The scripts are not very well annotated for the time being, sorry about that. I hope to improve that upon publication of the study. I put random seeds in order to be able to reproduce the exact instantiations of the experiments. The randomized component is the initialization of the starting matrixes for factorization. 
 
-For example, suppose we have sites A, B; possible species are x, y, z. Suppose site A containc species (x,z), site B contains species (y,z), the the table will have the following rows:
 
-	Ax
-	Az
-	By
-	Bz
+The scripts for reproducing the analysis are as follows:
 
-For experimenting with recommender system one needs to convert this to the occurence matrix, such:
+	run1_factorization.R	
 
-		x	y	z
-	A	1	0	1
-	B	0	1	0
+taxes genus-sites occurence matrix as input and does matrix factorization.
+
+	run2_loop_parameters.R
 	
-I'm not giving any code for conversion, you can easily do it in the most convenient way for you. I will explain next how to handle species and localities. Handling localities is rather straightforward, but handling species is not.
+does matrix factorization with different parameter settings (grid search), this tests 64 variants of parameter settings and takes a few hours to complete on a commodity laptop. This experiment is reported in Appendix A of the manuscript.
 
-If you download the flat table, it should have around 85 columns. The database is being developed as well as data, so depending on when you are reading this, there may be more columns, but the principle, I'm sure stays. It is a good idea to download the newest data from the database, since data is being edited, updated and extended continuously.
+	run3_abundances.R
 
+is the experiment of predicting relative abundances.
 
-The table has 85 columns. The columns describing sites (localities) that are relevant for recommender systems task: 
+	run4_fill_indets.R
+	
+is the experiment of predicting indetermined cerdivs.
 
-* LIDNUM, NAME - site ID and name (names should be unique, but better to use ID to be safe)
-* MAX\_AGE, MIN\_AGE - timestamps of the site, upper and lower age limits in millions of years
-* LATSTR, LONGSTR, LAT, LONG - geographic coordinates of sites in string and numeric formats (relevant if one wants to take spatial autocorrelation into account, for instance)
-
-You may want to filter by continent or country.
-
-Other columns describing sites, not directly relevant for the recommender task:
-
-* BFA\_MAX, BFA\_MAX\_ABS, BFA\_MIN, BFA\_MIN\_ABS, FRAC\_MAX, FRAC\_MIN - basis for age and fractions of age, they indicate where timestamp information comes from
-* CHRON, AGE_COMM - chronostratigraphic age and age comment, they can give extra information about age as free text entries
-* COUNTRY, STATE, COUNTY - where the site is located
-* APNUMSPM - how many specimens were found on the site approximately
-* GENERAL - whether it is a general locality (yes or no), general locality indicates sites composed of several localities or when the area of collection is only known approximately
-* LOC_SYNONYMS - other names by which the site may be known
-* MEAN\_HYPSODONTY, ESTIMATE\_PRECIP, ESTIMATE\_TEMP, ESTIMATE\_NPP, PERS\_WOODY\_COVER, PERS\_POLLEN\_AP, PERS\_POLLEN\_NAP, PERS\_POLLEN\_OTHER - interpreted characteristics of the site, e.g. estimates of mean annual precipitation
-
-The remaining coliumns describe species. In the Linnean taxonomic system a species is uniquely described by GENUS+SPECIES. For example, a wolf is called *Canis lupus*.
-
-[to be continued soon]
-
-
-
-
-
-
+	run5_clusters.R
+	
+produces the community tree for analysis of companionships.
