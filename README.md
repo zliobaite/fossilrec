@@ -30,3 +30,16 @@ is the experiment of predicting indetermined cerdivs.
 	run5_clusters.R
 	
 produces the community tree for analysis of companionships.
+
+
+Folder 
+        
+        5_validation_present 
+
+contains the code for experiments with present day data, reported in the revised version of the manuscript, Section 3.
+
+Folder 
+
+        6_plot_abundances
+        
+contains the code for producting Figure 2 (relative abundances of Pasalar and Somosaguas).
