@@ -137,7 +137,7 @@ pdf('4_plots/fig_clusters_occ_clado.pdf',width = 20,height = 25)
 plot(hcp_occ, type = "cladogram",tip.color = mypal[clu_cat_occ])
 dev.off()
 
-pdf('4_plots/fig_clusters_occ_sq.pdf',width = 15,height = 15)
+pdf('4_plots/fig_clusters_occ_sq.pdf',width = 15,height = 20)
 plot(hcp_occ,tip.color = mypal[clu_cat_occ])
 dev.off()
 
