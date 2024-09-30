@@ -2,7 +2,7 @@
 
 This is a repository to accompany a research paper:
 
-Zliobaite, I. (2022). Recommender systems for fossil species distribution modeling. Methods in Ecology and Evolution. Accepted.
+Zliobaite, I. (2022). Recommender systems for fossil species distribution modeling. Methods in Ecology and Evolution 13(8): 1609-1706.
 
 The repository contains input datasets as well as scripts for running the analysis and reproducing the figures and tables reported in the manuscript. The occurence matrix is compiled from a public data dump downloaded from on 20210309. Data preprocessing steps are described in the manuscript.
 
